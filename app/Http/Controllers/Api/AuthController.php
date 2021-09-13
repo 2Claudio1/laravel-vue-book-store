@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -29,5 +30,24 @@ class AuthController extends Controller
         return $request->user();
         // Alternative:
         // return Auth::user();
+    }
+
+    public function changePassword(Request $request)
+    {
+        //$email = Auth::user()->email;
+        //$user = User::where('email', $email)->first();
+
+        //$user = $request->user();
+        if (Hash::check($request->oldPassword, $request->user()->password)) {
+
+            $user = $this->me($request);
+            
+            $user->password = Hash::make($request->newPassword);
+            $user->save();
+            return response()->json(['message' => 'Password changed'], 200);
+
+        } else {
+            return response()->json(['message' => 'Wrong password.'], 401);
+        }
     }
 }
