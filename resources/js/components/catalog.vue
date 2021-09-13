@@ -110,7 +110,6 @@ export default {
   methods: {
     setUser: function () {
       if (this.$store.state.user !== null) this.user = this.$store.state.user;
-      console.log(this.user);
     },
     getBooks: function () {
       axios.get("api/books").then((response) => {
