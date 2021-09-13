@@ -42,7 +42,7 @@
                   class="nav-link"
                   to="/cart"
                   v-if="$store.state.user.type === 'Customer'"
-                  >Cart</router-link
+                  >Cart <template v-if="cartCounter > 0">({{ cartCounter }})</template> </router-link
                 >
               </li>
             </template>
@@ -86,16 +86,37 @@
 <script>
 export default {
   methods: {
-    logout () {
-      axios.post('/api/logout').then(response => {
-        this.$store.commit('clearUser')
-        this.$toasted.show('Utilizador saiu da aplicação.', { type: 'warning' })
-        this.$router.push('/')
-      })
-        .catch(error => {
-          this.$toasted.show('Pedido HTTP "Logout" inválido!', { type: 'error' })
+    logout() {
+      axios
+        .post("/api/logout")
+        .then((response) => {
+          this.$store.commit("clearUser");
+          this.$toasted.show("Utilizador saiu da aplicação.", {
+            type: "warning",
+          });
+          this.$router.push('/')
         })
+        .catch((error) => {
+          this.$toasted.show('Pedido HTTP "Logout" inválido!', {
+            type: "error",
+          });
+        });
     },
   },
-}
+    computed: {
+    cartCounter: function () {
+      let cartCounter = 0;
+
+      console.log("Cart size" + this.$store.state.cart.length);
+
+      if (this.$store.state.cart.length > 0) {
+        this.$store.state.cart.forEach(function (book) {
+          cartCounter += book.quantity;
+        });
+      }
+
+      return cartCounter;
+    },
+  },
+};
 </script>

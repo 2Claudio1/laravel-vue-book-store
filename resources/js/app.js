@@ -45,5 +45,6 @@ new Vue({
     store,
     created() {
         this.$store.dispatch('loadUserLogged')
+        this.$store.dispatch('rebuildCartFromStorage')
     }
 }).$mount('#app')

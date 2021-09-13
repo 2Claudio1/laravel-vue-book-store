@@ -137,14 +137,12 @@ export default {
       this.visible = false;
     },
     confirmDelivery: function (purchase) {
-      console.log(purchase.id);
       axios.put("api/purchases/deliver", purchase).then((response) => {
         this.purchases = response.data;
         this.$toasted.info("Purchase number " + purchase.id + " delivered!");
       });
     },
     cancelDelivery: function (purchase) {
-      console.log(purchase.id);
       axios.put("api/purchases/cancel", purchase).then((response) => {
         this.purchases = response.data;
         this.$toasted.info("Purchase number " + purchase.id + " canceled!");
