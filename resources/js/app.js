@@ -33,4 +33,7 @@ new Vue({
     render: h => h(App),
     router,
     store,
+    created() {
+        this.$store.dispatch('loadUserLogged')
+    }
 }).$mount('#app')

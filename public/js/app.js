@@ -2106,7 +2106,10 @@ new Vue({
     return h(_App_vue__WEBPACK_IMPORTED_MODULE_1__.default);
   },
   router: router,
-  store: _stores_global_store__WEBPACK_IMPORTED_MODULE_0__.default
+  store: _stores_global_store__WEBPACK_IMPORTED_MODULE_0__.default,
+  created: function created() {
+    this.$store.dispatch('loadUserLogged');
+  }
 }).$mount('#app');
 
 /***/ }),
@@ -2182,6 +2185,15 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use((vuex__WEBPACK_IMPORTED_MODULE_1___
     },
     setUser: function setUser(state, user) {
       state.user = user;
+    }
+  },
+  actions: {
+    loadUserLogged: function loadUserLogged(context) {
+      axios.get('/api/users/me').then(function (response) {
+        context.commit('setUser', response.data);
+      })["catch"](function (error) {
+        context.commit('clearUser');
+      });
     }
   }
 }));

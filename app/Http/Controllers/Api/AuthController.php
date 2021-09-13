@@ -23,4 +23,11 @@ class AuthController extends Controller
         Auth::guard('web')->logout();  //check if Auth::logout(); works
         return response()->json(['message' => 'User session closed'], 200);
     }
+
+    public function me(Request $request)
+    {
+        return $request->user();
+        // Alternative:
+        // return Auth::user();
+    }
 }
