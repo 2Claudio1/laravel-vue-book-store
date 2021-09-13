@@ -2070,9 +2070,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
 /* harmony import */ var _components_home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/home */ "./resources/js/components/home.vue");
 /* harmony import */ var _components_login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/login */ "./resources/js/components/login.vue");
-/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-toasted */ "./node_modules/vue-toasted/dist/vue-toasted.min.js");
-/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_toasted__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/changePassword'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/catalog'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/cart'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/purchases'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-toasted */ "./node_modules/vue-toasted/dist/vue-toasted.min.js");
+/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_toasted__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
@@ -2081,24 +2085,44 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.use((vue_toasted__WEBPACK_IMPORTED_MODULE_4___default()), {
+
+
+
+
+Vue.use((vue_toasted__WEBPACK_IMPORTED_MODULE_5___default()), {
   position: 'top-center',
   duration: 5000,
   type: 'info'
 });
 
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_5__.default);
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_6__.default);
 var routes = [{
   path: '/',
-  redirect: '/home'
-}, {
+  redirect: '/books'
+}, //    { path: '/home', component: HomeComponent },
+{
   path: '/home',
-  component: _components_home__WEBPACK_IMPORTED_MODULE_2__.default
+  redirect: '/books'
 }, {
   path: '/login',
   component: _components_login__WEBPACK_IMPORTED_MODULE_3__.default
+}, {
+  path: '/password',
+  component: Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/changePassword'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+}, {
+  path: '/books',
+  component: Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/catalog'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+}, {
+  path: '/mypurchases',
+  component: Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/purchases'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+}, {
+  path: '/pendingpurchases',
+  component: Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/purchases'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+}, {
+  path: '/cart',
+  component: Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/cart'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
 }];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__.default({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_6__.default({
   routes: routes
 });
 new Vue({
@@ -2106,7 +2130,10 @@ new Vue({
     return h(_App_vue__WEBPACK_IMPORTED_MODULE_1__.default);
   },
   router: router,
-  store: _stores_global_store__WEBPACK_IMPORTED_MODULE_0__.default
+  store: _stores_global_store__WEBPACK_IMPORTED_MODULE_0__.default,
+  created: function created() {
+    this.$store.dispatch('loadUserLogged');
+  }
 }).$mount('#app');
 
 /***/ }),
