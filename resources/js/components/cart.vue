@@ -51,6 +51,7 @@
       </div>
       <div class="text-right col-5">
         <button class="btn btn-primary btn-lg"
+        v-on:click.prevent="confirmPurchase()"
         >Confirm Purchase</button>
       </div>
     </div>
@@ -73,6 +74,21 @@ export default {
     },
     removeItem: function (item) {
       this.$store.dispatch("removeItemFromCart", item);
+    },
+    confirmPurchase: function () {
+      let data = {
+        order: this.$store.state.cart,
+        price: this.totalPrice,
+      };
+
+      if (this.$store.state.cart.length > 0) {
+        axios.post("/api/purchase", data).then((response) => {
+          this.$toasted.info(
+            'Foi criada a compra com o nº "' + response.data.id
+          );
+          this.$store.state.cart = [];
+        });
+      }
     },
   },
   computed: {

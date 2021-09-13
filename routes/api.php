@@ -31,3 +31,6 @@ Route::get('genres', [BookController::class, 'genresIndex']);
 Route::get('purchases', [PurchaseController::class, 'purchases']);
 Route::put('purchases/deliver',                [PurchaseController::class, 'deliverPurchase']);
 Route::put('purchases/cancel',                [PurchaseController::class, 'cancelPurchase']);
+
+//Cart routes
+Route::post('purchase',                [PurchaseController::class, 'store']);

@@ -57,4 +57,20 @@ class PurchaseController extends Controller
 
         return $this->pendingPurchases($request);
     }
+
+    public function store(Request $request)
+    {
+        $purchase = new Purchase();
+        $purchase->date = date("Y-m-d");
+        $purchase->status = "P";
+        $purchase->customer_id = Auth::user()->id;
+        $purchase->total=$request->price;
+        $purchase->save();
+
+        foreach ($request->order as $item) {
+            $purchase->books()->attach($item['item']['id'], ['purchase_id' => $purchase->id, 'qty' => $item['quantity'], 'unit_price' => $item['item']['price']]);
+        }
+
+        return response()->json(new PurchaseResource($purchase), 201);
+    }
 }

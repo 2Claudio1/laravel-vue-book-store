@@ -28,7 +28,6 @@ export default new Vuex.Store({
         addItemToCart(state, item) {
             const record = state.cart.find(p => p.item.id === item.id)
 
-            console.log(record)
             if (!record) {
                 state.cart.push({
                     item,
