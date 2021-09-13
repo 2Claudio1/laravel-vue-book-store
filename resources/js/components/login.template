@@ -1,0 +1,28 @@
+<template>
+  <div>
+    <h2>Entrar</h2>
+    <div class="form-group">
+      <label for="inputEmail">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="inputEmail"
+        placeholder="Endereço Email"
+        class="form-control"
+      >
+    </div>
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="inputPassword"
+        class="form-control"
+      >
+    </div>
+    <div class="form-group">
+      <a class="btn btn-primary">Login</a>
+    </div>
+  </div>
+
+</template>
