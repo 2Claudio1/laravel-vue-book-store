@@ -90,6 +90,7 @@ export default {
       axios.post('/api/logout').then(response => {
         this.$store.commit('clearUser')
         this.$toasted.show('Utilizador saiu da aplicação.', { type: 'warning' })
+        this.$router.push('/')
       })
         .catch(error => {
           this.$toasted.show('Pedido HTTP "Logout" inválido!', { type: 'error' })

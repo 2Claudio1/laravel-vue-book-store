@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,6 @@ Route::middleware('auth:sanctum')->put('changePassword', [AuthController::class,
 //Book routes
 Route::get('books', [BookController::class, 'index']);
 Route::get('genres', [BookController::class, 'genresIndex']);
+
+//Purchase routes
+Route::get('purchases', [PurchaseController::class, 'purchases']);
