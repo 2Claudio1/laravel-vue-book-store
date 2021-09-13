@@ -39,6 +39,7 @@
                 <button
                   class="btn btn-primary"
                   v-if="user.type === 'Employee'"
+                  v-on:click.prevent="confirmDelivery(purchase)"
                 >
                   Deliver
                 </button>
@@ -47,6 +48,7 @@
                 <button
                   class="btn btn-danger"
                   v-if="user.type === 'Employee'"
+                  v-on:click.prevent="cancelDelivery(purchase)"
                 >
                   Cancel
                 </button>
@@ -118,6 +120,7 @@ export default {
   methods: {
     setUser: function () {
       if (this.$store.state.user !== null) this.user = this.$store.state.user;
+      console.log(this.user);
     },
     getPurchases: function () {
       axios.get("api/purchases").then((response) => {
@@ -133,7 +136,20 @@ export default {
     moreDetails: function () {
       this.visible = false;
     },
-
+    confirmDelivery: function (purchase) {
+      console.log(purchase.id);
+      axios.put("api/purchases/deliver", purchase).then((response) => {
+        this.purchases = response.data;
+        this.$toasted.info("Purchase number " + purchase.id + " delivered!");
+      });
+    },
+    cancelDelivery: function (purchase) {
+      console.log(purchase.id);
+      axios.put("api/purchases/cancel", purchase).then((response) => {
+        this.purchases = response.data;
+        this.$toasted.info("Purchase number " + purchase.id + " canceled!");
+      });
+    },
   },
   mounted() {
     this.setUser();
