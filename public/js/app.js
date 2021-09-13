@@ -2430,6 +2430,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2441,6 +2443,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     setUser: function setUser() {
       if (this.$store.state.user !== null) this.user = this.$store.state.user;
+      console.log(this.user);
     },
     getPurchases: function getPurchases() {
       var _this = this;
@@ -2459,6 +2462,26 @@ __webpack_require__.r(__webpack_exports__);
     },
     moreDetails: function moreDetails() {
       this.visible = false;
+    },
+    confirmDelivery: function confirmDelivery(purchase) {
+      var _this2 = this;
+
+      console.log(purchase.id);
+      axios.put("api/purchases/deliver", purchase).then(function (response) {
+        _this2.purchases = response.data;
+
+        _this2.$toasted.info("Purchase number " + purchase.id + " delivered!");
+      });
+    },
+    cancelDelivery: function cancelDelivery(purchase) {
+      var _this3 = this;
+
+      console.log(purchase.id);
+      axios.put("api/purchases/cancel", purchase).then(function (response) {
+        _this3.purchases = response.data;
+
+        _this3.$toasted.info("Purchase number " + purchase.id + " canceled!");
+      });
     }
   },
   mounted: function mounted() {
@@ -39313,9 +39336,23 @@ var render = function() {
                     },
                     [
                       _vm.user.type === "Employee"
-                        ? _c("button", { staticClass: "btn btn-primary" }, [
-                            _vm._v("\n                Deliver\n              ")
-                          ])
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.confirmDelivery(purchase)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                Deliver\n              "
+                              )
+                            ]
+                          )
                         : _vm._e()
                     ]
                   ),
@@ -39328,9 +39365,19 @@ var render = function() {
                     },
                     [
                       _vm.user.type === "Employee"
-                        ? _c("button", { staticClass: "btn btn-danger" }, [
-                            _vm._v("\n                Cancel\n              ")
-                          ])
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.cancelDelivery(purchase)
+                                }
+                              }
+                            },
+                            [_vm._v("\n                Cancel\n              ")]
+                          )
                         : _vm._e()
                     ]
                   ),

@@ -39,4 +39,22 @@ class PurchaseController extends Controller
 
         return $filtered_collection;
     }
+
+    public function deliverPurchase(Request $request)
+    {
+        $order = Purchase::find($request->id);
+        $order->status='D';
+        $order->save();
+
+        return $this->pendingPurchases($request);
+    }
+
+    public function cancelPurchase(Request $request)
+    {
+        $order = Purchase::find($request->id);
+        $order->status='C';
+        $order->save();
+
+        return $this->pendingPurchases($request);
+    }
 }
