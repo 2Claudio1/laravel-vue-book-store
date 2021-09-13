@@ -1952,6 +1952,178 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/catalog.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/catalog.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      user: [],
+      books: [],
+      genres: [],
+      search: "",
+      booksGenre: []
+    };
+  },
+  methods: {
+    setUser: function setUser() {
+      if (this.$store.state.user !== null) this.user = this.$store.state.user;
+      console.log(this.user);
+    },
+    getBooks: function getBooks() {
+      var _this = this;
+
+      axios.get("api/books").then(function (response) {
+        _this.books = response.data;
+      });
+    },
+    getGenres: function getGenres() {
+      var _this2 = this;
+
+      axios.get("api/genres").then(function (response) {
+        _this2.genres = response.data;
+      });
+    },
+    clearSearch: function clearSearch() {
+      this.search = "";
+    },
+    addItemToCart: function addItemToCart(book) {
+      this.$store.commit("addItemToCart", book);
+    },
+    booksByGenreCode: function booksByGenreCode(genreCode) {
+      return this.filteredBooks.filter(function (book) {
+        return book.genre == genreCode;
+      });
+    }
+  },
+  computed: {
+    filteredBooks: function filteredBooks() {
+      var _this3 = this;
+
+      if (this.search.trim() == "") {
+        return this.books;
+      } else {
+        return this.books.filter(function (book) {
+          return book.title.toLowerCase().includes(_this3.search.toLowerCase()) || book.name.toLowerCase().includes(_this3.search.toLowerCase());
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.setUser();
+    this.getBooks();
+    this.getGenres();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/changePassword.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/changePassword.vue?vue&type=script&lang=js& ***!
@@ -37704,15 +37876,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _catalog_vue_vue_type_template_id_380b2d1e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./catalog.vue?vue&type=template&id=380b2d1e& */ "./resources/js/components/catalog.vue?vue&type=template&id=380b2d1e&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _catalog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./catalog.vue?vue&type=script&lang=js& */ "./resources/js/components/catalog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__.default)(
-  script,
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _catalog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _catalog_vue_vue_type_template_id_380b2d1e___WEBPACK_IMPORTED_MODULE_0__.render,
   _catalog_vue_vue_type_template_id_380b2d1e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
@@ -37896,6 +38070,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./App.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/App.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/catalog.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/catalog.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_catalog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./catalog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/catalog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_catalog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -38392,36 +38582,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", [_c("h1", [_vm._v("Books")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-12" },
+        [
           _c("div", { staticClass: "col-12" }, [
             _c("div", { staticClass: "form-group" }, [
               _c("div", { staticClass: "input-group" }, [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.search,
+                      expression: "search"
+                    }
+                  ],
                   staticClass: "form-control",
                   attrs: {
                     type: "text",
                     name: "filterStr",
                     id: "inputfilterStr",
                     placeholder: "Search within the title or genre"
+                  },
+                  domProps: { value: _vm.search },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.search = $event.target.value
+                    }
                   }
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "input-group-append" }, [
                   _c(
                     "button",
-                    { staticClass: "input-group-text bg-success text-white" },
-                    [_vm._v("Clear")]
+                    {
+                      staticClass: "input-group-text bg-success text-white",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.clearSearch($event)
+                        }
+                      }
+                    },
+                    [_vm._v("\n                Clear\n              ")]
                   )
                 ])
               ])
@@ -38430,72 +38641,133 @@ var staticRenderFns = [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
                 _c("h3", [
-                  _vm._v(
-                    'All Books   OU   Books whose title or genre includes "XXX"'
-                  )
+                  _vm.search.trim() === ""
+                    ? _c("span", [_vm._v(" All Books ")])
+                    : _c("span", [
+                        _vm._v(
+                          '\n                Books whose title or genre includes "' +
+                            _vm._s(_vm.search) +
+                            '"\n              '
+                        )
+                      ])
                 ])
               ])
             ])
           ]),
           _vm._v(" "),
-          _c("div", [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-12" }, [
-                _c("div", { staticClass: "bg-secondary px-3 pt-3 pb-2 my-3" }, [
-                  _c("h4", { staticClass: "text-white" }, [
-                    _vm._v("Genre Name")
-                  ])
+          _vm._l(_vm.genres, function(genre) {
+            return _c("div", { key: genre.id }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-12" }, [
+                  _c(
+                    "div",
+                    { staticClass: "bg-secondary px-3 pt-3 pb-2 my-3" },
+                    [
+                      _c("h4", { staticClass: "text-white" }, [
+                        _vm._v(_vm._s(genre.name))
+                      ])
+                    ]
+                  )
                 ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-sm-12 col-lg-6" }, [
-                _c(
-                  "div",
-                  { staticClass: "card shadow-sm sm-4 mb-4 flex-row" },
-                  [
-                    _c("img", {
-                      staticClass: "bd-placeholder-img card-img-left w-25 m-2",
-                      attrs: { src: "url_da_imagem_com_a_capa_do_livro" }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body d-flex flex-column" }, [
-                      _c("h3", [_vm._v("Book Title")]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _vm._v("Book Description")
-                      ]),
-                      _vm._v(" "),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "row" },
+                _vm._l(_vm.booksByGenreCode(genre.code), function(book) {
+                  return _c(
+                    "div",
+                    { key: book.id, staticClass: "col-sm-12 col-lg-6" },
+                    [
                       _c(
                         "div",
-                        {
-                          staticClass:
-                            "text-center mt-auto d-flex justify-content-center"
-                        },
+                        { staticClass: "card shadow-sm sm-4 mb-4 flex-row" },
                         [
-                          _c("h5", { staticClass: "mx-2 pt-2" }, [
-                            _vm._v("146 €")
-                          ]),
+                          book.cover_img != null
+                            ? _c("img", {
+                                staticClass:
+                                  "bd-placeholder-img card-img-left w-25 m-2",
+                                attrs: {
+                                  src: "./storage/capas/" + book.cover_img
+                                }
+                              })
+                            : _vm._e(),
                           _vm._v(" "),
-                          _c("div", { staticClass: "mx-2" }, [
-                            _c("div", { staticClass: "text-center" }, [
-                              _c("button", { staticClass: "btn btn-primary" }, [
-                                _vm._v("Add to cart")
-                              ])
-                            ])
-                          ])
+                          _c(
+                            "div",
+                            { staticClass: "card-body d-flex flex-column" },
+                            [
+                              _c("h3", [_vm._v(_vm._s(book.title))]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "card-text" }, [
+                                _vm._v(_vm._s(book.description))
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "text-center mt-auto d-flex justify-content-center"
+                                },
+                                [
+                                  _c("h5", { staticClass: "mx-2 pt-2" }, [
+                                    _vm._v(_vm._s(book.price))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm.user.type === "Customer"
+                                    ? _c("div", { staticClass: "mx-2" }, [
+                                        _c(
+                                          "div",
+                                          { staticClass: "text-center" },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-primary",
+                                                on: {
+                                                  click: function($event) {
+                                                    $event.preventDefault()
+                                                    return _vm.addItemToCart(
+                                                      book
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                        Add to cart\n                      "
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ]
+                              )
+                            ]
+                          )
                         ]
                       )
-                    ])
-                  ]
-                )
-              ])
+                    ]
+                  )
+                }),
+                0
+              )
             ])
-          ])
-        ])
-      ])
+          })
+        ],
+        2
+      )
     ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("Books")])])
   }
 ]
 render._withStripped = true
