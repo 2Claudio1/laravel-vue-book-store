@@ -5,50 +5,53 @@
         <div class="container d-flex justify-content-between">
           <router-link
             class="navbar-brand d-flex align-items-center"
-            to="/"
+            to="/books"
           >
             <img
               src="img/logo.svg"
               width="20"
               height="20"
-              style="margin-right:20px"
+              style="margin-right: 20px"
             />
             <strong>Exame (DAD)</strong>
           </router-link>
 
           <ul class="nav justify-content-end">
             <li class="nav-item">
-              <router-link
-                class="nav-link"
-                to="#"
-              >Menu1</router-link>
+              <router-link class="nav-link" to="/books">Books</router-link>
             </li>
-            <li class="nav-item">
-              <router-link
-                class="nav-link"
-                to="#"
-              >Menu2</router-link>
+            <template v-if="$store.state.user">
+              <li class="nav-item">
+                <router-link
+                  class="nav-link"
+                  to="/mypurchases"
+                  v-if="$store.state.user.type === 'Customer'"
+                  >My Purchases</router-link
+                >
+              </li>
+              <li class="nav-item">
+                <router-link
+                  class="nav-link"
+                  to="/pendingpurchases"
+                  v-if="$store.state.user.type === 'Employee'"
+                  >Pending Purchases</router-link
+                >
+              </li>
+              <li class="nav-item">
+                <router-link
+                  class="nav-link"
+                  to="/cart"
+                  v-if="$store.state.user.type === 'Customer'"
+                  >Cart</router-link
+                >
+              </li>
+            </template>
+            <li v-if="!$store.state.user" class="nav-item">
+              <router-link to="/login" class="btn btn-secondary" role="button"
+                >Entrar</router-link
+              >
             </li>
-            <li class="nav-item">
-              <router-link
-                class="nav-link"
-                to="#"
-              >Menu3</router-link>
-            </li>
-            <li
-              v-if="!$store.state.user"
-              class="nav-item"
-            >
-              <router-link
-                to="/login"
-                class="btn btn-secondary"
-                role="button"
-              >Entrar</router-link>
-            </li>
-            <li
-              v-else
-              class="nav-item"
-            >
+            <li v-else class="nav-item">
               <div class="dropdown">
                 <button
                   class="btn btn-secondary dropdown-toggle"
@@ -60,22 +63,11 @@
                 >
                   {{ $store.state.user.name }}
                 </button>
-                <div
-                  class="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton"
-                >
-                  <router-link
-                    to="#"
-                    class="dropdown-item"
-                  >Menu4</router-link>
-                  <router-link
-                    to="#"
-                    class="dropdown-item"
-                  >Menu5</router-link>
-                  <a
-                    class="dropdown-item"
-                    v-on:click.prevent="logout"
-                  >Sair</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <router-link to="/password" class="dropdown-item"
+                    >Alterar Senha</router-link
+                  >
+                  <a class="dropdown-item" v-on:click.prevent="logout">Sair</a>
                 </div>
               </div>
             </li>
