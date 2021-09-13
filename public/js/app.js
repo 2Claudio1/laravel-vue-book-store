@@ -2040,6 +2040,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {};
@@ -2053,6 +2054,22 @@ __webpack_require__.r(__webpack_exports__);
     },
     removeItem: function removeItem(item) {
       this.$store.dispatch("removeItemFromCart", item);
+    },
+    confirmPurchase: function confirmPurchase() {
+      var _this = this;
+
+      var data = {
+        order: this.$store.state.cart,
+        price: this.totalPrice
+      };
+
+      if (this.$store.state.cart.length > 0) {
+        axios.post("/api/purchase", data).then(function (response) {
+          _this.$toasted.info('Foi criada a compra com o nº "' + response.data.id);
+
+          _this.$store.state.cart = [];
+        });
+      }
     }
   },
   computed: {
@@ -2777,7 +2794,6 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use((vuex__WEBPACK_IMPORTED_MODULE_1___
       var record = state.cart.find(function (p) {
         return p.item.id === item.id;
       });
-      console.log(record);
 
       if (!record) {
         state.cart.push({
@@ -39004,7 +39020,21 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "text-right col-5" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-lg",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.confirmPurchase()
+              }
+            }
+          },
+          [_vm._v("Confirm Purchase")]
+        )
+      ])
     ])
   ])
 }
@@ -39028,16 +39058,6 @@ var staticRenderFns = [
         _c("th"),
         _vm._v(" "),
         _c("th")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-right col-5" }, [
-      _c("button", { staticClass: "btn btn-primary btn-lg" }, [
-        _vm._v("Confirm Purchase")
       ])
     ])
   }
